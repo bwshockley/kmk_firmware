@@ -6,7 +6,7 @@ from kmk.keys import KC
 from kmk.extensions.media_keys import MediaKeys
 from kmk.modules.encoder import EncoderHandler
 from kmk.modules.layers import Layers
-from kmk.modules.split import Split, SplitType
+from kmk.modules.split import Split, SplitType, SplitSide
 from kmk.modules.macros import Macros
 from kmk.modules.tapdance import TapDance
 
@@ -35,14 +35,12 @@ PASS = KC.MACRO("Send Me Macro!")
 split = Split(
     split_flip=True,              # If both halves are the same, but flipped, set this True
     split_type=SplitType.UART,    # Defaults to UART
-    uart_interval=20,             # Sets the uarts delay. Lower numbers draw more power
-    use_pio=False,                # Using Helios board, UART does not require PIO.
-)
+    split_side=SplitSide.LEFT
 
 keyboard.modules.append(split)
 
 rgb = RGB(
-  pixel_pin=board.GP0,
+  pixel_pin=keyboard.rgb_pixel_pin,
   num_pixels=63,
   val_limit=100,
 
@@ -84,7 +82,7 @@ keyboard.keymap = [
 # fmt:on
 
 encoder_handler = EncoderHandler()
-encoder_handler.pins = ((board.GP29, board.GP28, None, False),)
+encoder_handler.pins = ((keyboard.encoder_pin_0, keyboard.encoder_pin_1, None, False),)
 encoder_handler.map = (
     ((KC.VOLD, KC.VOLU),),  # base layer
     ((KC.VOLD, KC.VOLU),),  # Raise
