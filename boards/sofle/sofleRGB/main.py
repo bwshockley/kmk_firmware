@@ -36,6 +36,7 @@ split = Split(
     split_flip=True,              # If both halves are the same, but flipped, set this True
     split_type=SplitType.UART,    # Defaults to UART
     split_side=SplitSide.LEFT
+)
 
 keyboard.modules.append(split)
 
