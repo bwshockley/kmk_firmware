@@ -3,6 +3,7 @@ import board
 from kb import KMKKeyboard
 
 from kmk.keys import KC
+from kmk.extensions.media_keys import MediaKeys
 from kmk.modules.encoder import EncoderHandler
 from kmk.modules.layers import Layers
 from kmk.modules.split import Split, SplitType
@@ -12,6 +13,7 @@ from kmk.modules.tapdance import TapDance
 from kmk.extensions.RGB import RGB
 
 keyboard = KMKKeyboard()
+keyboard.extensions.append(MediaKeys())
 
 layers = Layers()
 
@@ -44,8 +46,7 @@ rgb = RGB(
   pixel_pin=board.GP0,
   num_pixels=63,
   val_limit=100,
-  animation_speed=1,
-  animation_mode=AnimationModes.STATIC
+
 )
 keyboard.extensions.append(rgb)
 
@@ -67,7 +68,7 @@ keyboard.keymap = [
     [  #LOWER
         # HERE----# HERE----# HERE----# HERE----# HERE----# HERE----# HERE----#ENCODER--#ENCODER--# HERE----# HERE----# HERE----# HERE----# HERE----# HERE----# HERE----
         KC.ESC,   KC.F1,    KC.F2,    KC.F3,    KC.F4,    KC.F5,                                            KC.F6,    KC.F7,    KC.F8,    KC.F9,    KC.F10,   KC.F11,
-        XXXXXXX,  KC.F11,   KC.F12,   XXXXXXX,  XXXXXXX,  XXXXXXX,                                          XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KS.PPLS,  KC.EQL,
+        XXXXXXX,  KC.F11,   KC.F12,   XXXXXXX,  XXXXXXX,  XXXXXXX,                                          XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC.PPLS,  KC.EQL,
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                                          XXXXXXX,  KC.UP,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                                          KC.LEFT,  KC.DOWN,  KC.RIGHT, XXXXXXX,  XXXXXXX,  PASS,
                             XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
