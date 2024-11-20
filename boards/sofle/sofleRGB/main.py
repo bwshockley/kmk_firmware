@@ -34,7 +34,6 @@ split = Split(
     split_flip=True,              # If both halves are the same, but flipped, set this True
     split_type=SplitType.UART,    # Defaults to UART
     uart_interval=20,             # Sets the uarts delay. Lower numbers draw more power
-    data_pin=board.RX,            # The primary data pin to talk to the secondary device with
     use_pio=False,                # Using Helios board, UART does not require PIO.
 )
 
