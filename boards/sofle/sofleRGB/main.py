@@ -1,6 +1,4 @@
-import board
-
-from kb import KMKKeyboard
+from kb import KMKKeyboard, rgb_pixel_pin
 
 from kmk.keys import KC
 from kmk.extensions.media_keys import MediaKeys
@@ -43,7 +41,7 @@ split = Split(
 keyboard.modules = [layers, split]
 
 rgb = RGB(
-  pixel_pin=board.GP0,
+  pixel_pin=rgb_pixel_pin,
   num_pixels=63,
   val_limit=100,
 
