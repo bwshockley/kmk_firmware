@@ -14,6 +14,7 @@ keyboard = KMKKeyboard()
 keyboard.extensions.append(MediaKeys())
 
 layers = Layers()
+keyboard.modules.append(layers)
 
 macros = Macros()
 keyboard.modules.append(macros)
@@ -21,7 +22,6 @@ keyboard.modules.append(macros)
 tapdance = TapDance()
 tapdance.tap_time = 500
 keyboard.modules.append(tapdance)
-keyboard.modules.append(Macros())
 
 CAPS_TD = KC.TD(
   KC.RSFT,
@@ -37,7 +37,7 @@ split = Split(
     use_pio=False,                # Using Helios board, UART does not require PIO.
 )
 
-keyboard.modules = [layers, split]
+keyboard.modules.append(split)
 
 rgb = RGB(
   pixel_pin=rgb_pixel_pin,
